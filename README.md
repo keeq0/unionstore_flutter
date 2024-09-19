@@ -9,4 +9,4 @@
 1. Каталог
 2. Карточка товара
 
-![image](https://github.com/user-attachments/assets/f6bd331c-e7eb-48d1-bd4f-771f2f181d2b)
+![image](https://github.com/user-attachments/assets/79d02f90-0a93-495d-bd6c-0af69af18297)
