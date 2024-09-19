@@ -11,7 +11,7 @@
 1. Каталог
 2. Карточка товара
 
-![image](https://github.com/user-attachments/assets/79d02f90-0a93-495d-bd6c-0af69af18297)
+![image](https://github.com/user-attachments/assets/8c11761b-2d33-4951-a0df-294e4d6346f3)
 
 ## Мобильное приложение
 
