@@ -1,0 +1,31 @@
+[
+    {
+      "id": 1,
+      "src": "assets/photos/first_item.png"
+    },
+    {
+      "id": 2,
+      "src": "assets/images/adidas_1.png"
+    },
+    {
+      "id": 3,
+      "src": "assets/images/adidas_2.png"
+    },
+    {
+      "id": 4,
+      "src": "assets/images/adidas_3.png"
+    },
+    {
+      "id": 5,
+      "src": "assets/images/nike_main.png"
+    },
+    {
+      "id": 6,
+      "src": "assets/images/nike_1.png"
+    },
+    {
+      "id": 7,
+      "src": "assets/images/nike_2.png"
+    }
+  ]
+  

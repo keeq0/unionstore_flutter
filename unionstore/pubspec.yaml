@@ -57,6 +57,10 @@ flutter:
     - assets/images/arrow.png
     - assets/images/search.png
     - assets/images/filter.png
+    - assets/photos/1.png
+    - assets/images/cart.png
+    - assets/data/products.json
+    - assets/data/photos.json
 
   fonts:
     - family: Montserrat
