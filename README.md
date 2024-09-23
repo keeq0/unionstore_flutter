@@ -24,6 +24,6 @@
 
 Работа приложения представлена ниже:
 
-![image](https://github.com/user-attachments/assets/6bcf2643-9c30-4bfa-a23b-e80e74aeac38)
+![image](https://github.com/user-attachments/assets/ca3d1cab-70d2-434d-a421-fe17671f89bb)
 
 ***a video or gif will be here soon 🥳***
