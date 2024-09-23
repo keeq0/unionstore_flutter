@@ -4,7 +4,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 30.0), // Отступ снизу 30 пикселей
+      padding: const EdgeInsets.only(bottom: 30.0),
       child: AppBar(
         backgroundColor: const Color.fromARGB(255, 6, 12, 24),
         leading: Padding(
@@ -56,5 +56,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 30); // Увеличить высоту AppBar на 30 пикселей
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 35);
 }

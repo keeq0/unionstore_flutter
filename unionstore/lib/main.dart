@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'appbar.dart';  // Подключаем кастомный AppBar
-import 'catalog.dart'; // Подключаем страницу Catalog
+import 'appbar.dart'; 
+import 'catalog.dart'; 
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: const Color.fromARGB(255, 6, 12, 24),
-        fontFamily: 'Montserrat', // Устанавливаем шрифт Montserrat по умолчанию
+        fontFamily: 'Montserrat', 
       ),
       home: const MyHomePage(),
     );

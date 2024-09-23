@@ -57,7 +57,7 @@ flutter:
     - assets/images/arrow.png
     - assets/images/search.png
     - assets/images/filter.png
-    - assets/photos/1.png
+    - assets/photos/
     - assets/images/cart.png
     - assets/data/products.json
     - assets/data/photos.json
@@ -67,6 +67,33 @@ flutter:
       fonts:
         - asset: assets/fonts/Montserrat-VariableFont_wght.ttf
         - asset: assets/fonts/Montserrat-Italic-VariableFont_wght.ttf
+          style: italic
+        - asset: assets/fonts/static/Montserrat-Black.ttf
+        - asset: assets/fonts/static/Montserrat-Blackitalic.ttf
+          style: italic
+        - asset: assets/fonts/static/Montserrat-Bold.ttf
+        - asset: assets/fonts/static/Montserrat-Bolditalic.ttf
+          style: italic
+        - asset: assets/fonts/static/Montserrat-ExtraBold.ttf
+        - asset: assets/fonts/static/Montserrat-ExtraBolditalic.ttf
+          style: italic
+        - asset: assets/fonts/static/Montserrat-ExtraLight.ttf
+        - asset: assets/fonts/static/Montserrat-Extralightitalic.ttf
+          style: italic
+        - asset: assets/fonts/static/Montserrat-Italic.ttf
+          style: italic
+        - asset: assets/fonts/static/Montserrat-Light.ttf
+        - asset: assets/fonts/static/Montserrat-Lightitalic.ttf
+          style: italic
+        - asset: assets/fonts/static/Montserrat-Medium.ttf
+        - asset: assets/fonts/static/Montserrat-Mediumitalic.ttf
+          style: italic
+        - asset: assets/fonts/static/Montserrat-Regular.ttf
+        - asset: assets/fonts/static/Montserrat-SemiBold.ttf
+        - asset: assets/fonts/static/Montserrat-SemiBolditalic.ttf
+          style: italic
+        - asset: assets/fonts/static/Montserrat-Thin.ttf
+        - asset: assets/fonts/static/Montserrat-Thinitalic.ttf
           style: italic
 
 

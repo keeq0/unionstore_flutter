@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './product.dart'; // Не забудьте импортировать модель данных
-import './data_service.dart'; // Импорт сервиса для загрузки данных
+import './product.dart'; 
+import './data_service.dart'; 
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({Key? key}) : super(key: key);
@@ -12,10 +12,10 @@ class CatalogPage extends StatefulWidget {
 class _CatalogPageState extends State<CatalogPage> {
   late Future<List<Product>> _products;
   
-  @override
+  @override // Загрузка товаров
   void initState() {
     super.initState();
-    _products = loadProducts(); // Загружаем товары
+    _products = loadProducts();
   }
 
   @override
@@ -30,14 +30,14 @@ class _CatalogPageState extends State<CatalogPage> {
             child: Container(
               width: 150,
               height: 150,
-              decoration: BoxDecoration(
+              decoration: BoxDecoration(   
                 shape: BoxShape.circle,
                 color: const Color.fromRGBO(47, 0, 255, 0.01),
                 boxShadow: [
                   BoxShadow(
                     color: const Color.fromRGBO(47, 0, 255, 0.1),
-                    blurRadius: 100,
-                    spreadRadius: 100,
+                    blurRadius: 70,
+                    spreadRadius: 70,
                   ),
                 ],
               ),
@@ -71,7 +71,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   'Каталог',
                   style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w700,
                     color: Colors.white,
                   ),
                 ),
@@ -81,10 +81,13 @@ class _CatalogPageState extends State<CatalogPage> {
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.white,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Поиск и фильтры
+                
+                // Блок поиска и фильтров (доделать центрирование)
+
                 Row(
                   children: [
                     Container(
@@ -105,7 +108,8 @@ class _CatalogPageState extends State<CatalogPage> {
                                 hintText: 'Поиск...',
                                 hintStyle: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 11,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w300,
                                 ),
                                 border: InputBorder.none,
                               ),
@@ -137,7 +141,7 @@ class _CatalogPageState extends State<CatalogPage> {
                             'Фильтры',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 11,
+                              fontSize: 13,
                               fontWeight: FontWeight.w300,
                             ),
                           ),
@@ -163,7 +167,8 @@ class _CatalogPageState extends State<CatalogPage> {
                 ),
                 const SizedBox(height: 10),
 
-                // Динамическая загрузка и отображение товаров
+                // Сетка товаров
+
                 Expanded(
                   child: FutureBuilder<List<Product>>(
                     future: _products,
@@ -220,7 +225,8 @@ class _CatalogPageState extends State<CatalogPage> {
     );
   }
 
-  // Функция для создания виджета товара
+  // Создание товара
+  
   Widget buildProductItem(Product product) {
     return Container(
       padding: const EdgeInsets.all(10),
@@ -237,7 +243,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
                   'assets/photos/${product.mainPhotoId}.png',
-                  width: 150,
+                  width: 170,
                   height: 100,
                   fit: BoxFit.cover,
                 ),
@@ -246,7 +252,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 top: 5,
                 right: 5,
                 child: Container(
-                  width: 40,
+                  width: 45,
                   height: 20,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
@@ -257,8 +263,8 @@ class _CatalogPageState extends State<CatalogPage> {
                     '₽ ${product.currentPrice}',
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 8,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 9,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -270,7 +276,8 @@ class _CatalogPageState extends State<CatalogPage> {
             product.brand,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 10,
+              fontSize: 11,
+              fontWeight: FontWeight.w300,
             ),
           ),
           const SizedBox(height: 3),
@@ -282,16 +289,16 @@ class _CatalogPageState extends State<CatalogPage> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 7),
           Text(
             '₽ ${product.currentPrice}',
             style: const TextStyle(
               color: Color.fromARGB(255, 55, 0, 255),
-              fontSize: 10,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 7),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -312,7 +319,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     ),
                     const SizedBox(width: 3),
                     const Text(
-                      'В Корзину',
+                      'В корзину',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 8,
