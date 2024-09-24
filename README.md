@@ -12,7 +12,7 @@
 1. Каталог
 2. Карточка товара
 
-![image](https://github.com/user-attachments/assets/731fd515-0065-4162-9189-2742e72e47c5)
+![image](https://github.com/user-attachments/assets/e077a161-89e7-4ad8-b702-00e4aae48902)
 
 ## Мобильное приложение
 
@@ -24,6 +24,6 @@
 
 Работа приложения представлена ниже:
 
-![image](https://github.com/user-attachments/assets/42329d42-a573-4890-bb82-ceb9df6cbebc)
+![image](https://github.com/user-attachments/assets/7f1a4fa9-6a25-4dfc-9d45-f124276c7c2d)
 
 ***видео или гифка скоро появятся здесь 🥳***
