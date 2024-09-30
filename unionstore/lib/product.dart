@@ -12,6 +12,7 @@ class Product {
   final String article;
   final String season;
   final String material;
+  final Map<String, bool> sizes;
 
   Product({
     required this.id,
@@ -25,6 +26,7 @@ class Product {
     required this.article,
     required this.season,
     required this.material,
+    required this.sizes,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -40,6 +42,7 @@ class Product {
       article: json['article'],
       season: json['season'],
       material: json['material'],
+      sizes: Map<String, bool>.from(json['sizes']),
     );
   }
 }

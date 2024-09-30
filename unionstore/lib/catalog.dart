@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './product.dart'; 
 import './data_service.dart'; 
+import './product_details_page.dart'; // Импорт страницы деталей товара
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({Key? key}) : super(key: key);
@@ -11,11 +12,11 @@ class CatalogPage extends StatefulWidget {
 
 class _CatalogPageState extends State<CatalogPage> {
   late Future<List<Product>> _products;
-  
-  @override // Загрузка товаров
+
+  @override
   void initState() {
     super.initState();
-    _products = loadProducts();
+    _products = loadProducts(); // Загрузка товаров из DataService
   }
 
   @override
@@ -30,7 +31,7 @@ class _CatalogPageState extends State<CatalogPage> {
             child: Container(
               width: 150,
               height: 150,
-              decoration: BoxDecoration(   
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: const Color.fromRGBO(47, 0, 255, 0.01),
                 boxShadow: [
@@ -85,9 +86,8 @@ class _CatalogPageState extends State<CatalogPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                
-                // Блок поиска и фильтров (доделать центрирование)
 
+                // Блок поиска и фильтров
                 Row(
                   children: [
                     Container(
@@ -168,7 +168,6 @@ class _CatalogPageState extends State<CatalogPage> {
                 const SizedBox(height: 10),
 
                 // Сетка товаров
-
                 Expanded(
                   child: FutureBuilder<List<Product>>(
                     future: _products,
@@ -225,131 +224,138 @@ class _CatalogPageState extends State<CatalogPage> {
     );
   }
 
-  // Создание товара
-  
+  // Создание карточки товара
   Widget buildProductItem(Product product) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 17, 24, 39),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  'assets/photos/${product.mainPhotoId}.png',
-                  width: 170,
-                  height: 100,
-                  fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProductDetailsPage(product: product)),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 17, 24, 39),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    'assets/photos/${product.mainPhotoId}.png',
+                    width: 170,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
                 ),
+                Positioned(
+                  top: 5,
+                  right: 5,
+                  child: Container(
+                    width: 45,
+                    height: 20,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 75, 85, 99),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      '₽ ${product.currentPrice}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 9,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Text(
+              product.brand,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 11,
+                fontWeight: FontWeight.w300,
               ),
-              Positioned(
-                top: 5,
-                right: 5,
-                child: Container(
-                  width: 45,
+            ),
+            const SizedBox(height: 3),
+            Text(
+              product.name,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 7),
+            Text(
+              '₽ ${product.currentPrice}',
+              style: const TextStyle(
+                color: Colors.grey,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 7),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 75,
                   height: 20,
-                  alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 75, 85, 99),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(5),
                   ),
-                  child: Text(
-                    '₽ ${product.currentPrice}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 9,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/cart.png',
+                        width: 10,
+                        height: 10,
+                      ),
+                      const SizedBox(width: 3),
+                      const Text(
+                        'В корзину',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 8,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 5),
-          Text(
-            product.brand,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 11,
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-          const SizedBox(height: 3),
-          Text(
-            product.name,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 11,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 7),
-          Text(
-            '₽ ${product.currentPrice}',
-            style: const TextStyle(
-              color: Color.fromARGB(255, 55, 0, 255),
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 7),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: 75,
-                height: 20,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 75, 85, 99),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/cart.png',
-                      width: 10,
-                      height: 10,
-                    ),
-                    const SizedBox(width: 3),
-                    const Text(
-                      'В корзину',
+                Container(
+                  width: 75,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 55, 0, 255),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Подробнее',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 8,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                width: 75,
-                height: 20,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 55, 0, 255),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Подробнее',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 8,
-                      fontWeight: FontWeight.bold,
-                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
