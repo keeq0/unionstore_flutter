@@ -15,7 +15,7 @@ class ProductDetailsPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.of(context).pop(); // Закрытие страницы товара
+            Navigator.of(context).pop();
           },
         ),
         title: const Text(
@@ -31,7 +31,7 @@ class ProductDetailsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30), // Отступ сверху
+              const SizedBox(height: 30),
               Text(
                 product.brand,
                 style: const TextStyle(
@@ -49,7 +49,7 @@ class ProductDetailsPage extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(height: 30), // Отступ вниз 30 после name
+              const SizedBox(height: 30),
 
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
@@ -60,7 +60,7 @@ class ProductDetailsPage extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(height: 20), // Отступ вниз 20 после фото
+              const SizedBox(height: 20), 
 
               Text(
                 product.description,
@@ -69,7 +69,7 @@ class ProductDetailsPage extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(height: 20), // Отступ вниз 20 после описания
+              const SizedBox(height: 20),
 
               const Text(
                 'Таблица размеров',
@@ -79,7 +79,7 @@ class ProductDetailsPage extends StatelessWidget {
                   shadows: [Shadow(offset: Offset(0, -5), color: Colors.grey)],
                   decorationThickness: 1,
                   decorationColor: Colors.grey,
-                  decoration: TextDecoration.underline, // Подчёркивание
+                  decoration: TextDecoration.underline,
                 ),
               ),
               const SizedBox(height: 15),
@@ -133,29 +133,29 @@ class ProductDetailsPage extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: 170,
-                    height: 50, // Высота кнопки 50
+                    height: 50,
                     child: ElevatedButton.icon(
                         icon: Image.asset(
                           'assets/images/cart.png',
                           width: 20,
                           height: 20,
-                        ), // Добавление иконки корзины
+                        ), 
                         label: const Text(
                           'В корзину',
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white, // Цвет текста
+                            color: Colors.white, 
                           ),
                         ),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(75, 85, 99, 1), // Цвет кнопки
+                          backgroundColor: const Color.fromRGBO(75, 85, 99, 1),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
                         ),
                         onPressed: () {
-                          // Добавление в корзину
+                        
                         },
                       ),
 
@@ -163,23 +163,23 @@ class ProductDetailsPage extends StatelessWidget {
                   const SizedBox(width: 10),
                   SizedBox(
                     width: 170,
-                    height: 50, // Высота кнопки 50
+                    height: 50,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromRGBO(55, 0, 255, 1), // Цвет кнопки
+                        backgroundColor: const Color.fromRGBO(55, 0, 255, 1), 
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
                       onPressed: () {
-                        // Покупка товара
+                       
                       },
                       child: const Text(
                         'Купить сейчас',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white, // Цвет текста
+                          color: Colors.white, 
                         ),
                       ),
                     ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './product.dart'; 
 import './data_service.dart'; 
-import './product_details_page.dart'; // Импорт страницы деталей товара
+import './product_details_page.dart'; 
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _CatalogPageState extends State<CatalogPage> {
   @override
   void initState() {
     super.initState();
-    _products = loadProducts(); // Загрузка товаров из DataService
+    _products = loadProducts();
   }
 
   @override
