@@ -54,11 +54,8 @@ dev_dependencies:
 flutter:
 
   assets:
-    - assets/images/arrow.png
-    - assets/images/search.png
-    - assets/images/filter.png
+    - assets/images/
     - assets/photos/
-    - assets/images/cart.png
     - assets/data/products.json
     - assets/data/photos.json
 

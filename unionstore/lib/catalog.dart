@@ -3,6 +3,7 @@ import './product.dart';
 import './data_service.dart'; 
 import './product_details_page.dart'; 
 
+
 class CatalogPage extends StatefulWidget {
   const CatalogPage({Key? key}) : super(key: key);
 
@@ -91,7 +92,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 Row(
                   children: [
                     Container(
-                      width: 250,
+                      width: 210,
                       height: 30,
                       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                       alignment: Alignment.center,
@@ -108,7 +109,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                 hintText: 'Поиск...',
                                 hintStyle: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w300,
                                 ),
                                 border: InputBorder.none,
@@ -141,7 +142,7 @@ class _CatalogPageState extends State<CatalogPage> {
                             'Фильтры',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 13,
+                              fontSize: 12,
                               fontWeight: FontWeight.w300,
                             ),
                           ),
@@ -155,6 +156,32 @@ class _CatalogPageState extends State<CatalogPage> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Container( // Кнопка "Добавить" ( сделать добавление ботинка )
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 115, 76, 255),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            
+                          });
+                        },
+                        child: const Center(
+                          child: Text(
+                            '+',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 21,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -308,34 +335,7 @@ class _CatalogPageState extends State<CatalogPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: 75,
-                  height: 20,
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 75, 85, 99),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/cart.png',
-                        width: 10,
-                        height: 10,
-                      ),
-                      const SizedBox(width: 3),
-                      const Text(
-                        'В корзину',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 8,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 75,
+                  width: 65,
                   height: 20,
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 55, 0, 255),
@@ -352,6 +352,49 @@ class _CatalogPageState extends State<CatalogPage> {
                     ),
                   ),
                 ),
+                Container(
+                  width: 65,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 75, 85, 99),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/cart.png',
+                        width: 10,
+                        height: 10,
+                      ),
+                      const SizedBox(width: 2),
+                      const Text(
+                        'Корзина',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 8,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container( // Кнопка "Удалить"
+                  width: 20,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 100, 0, 0),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: GestureDetector(
+                     onTap: () {
+                        showDeleteDialog(context, product);
+                      },
+                    child: const Center(
+                      child: Icon(Icons.delete, color: Colors.white, size: 15),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
@@ -359,4 +402,67 @@ class _CatalogPageState extends State<CatalogPage> {
       ),
     );
   }
+  void showDeleteDialog(BuildContext context, Product product) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: Color.fromARGB(255, 64, 64, 64),
+        title: Text('Удаление товара', style: TextStyle(color: Colors.white)),
+        content: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'Вы уверены, что хотите удалить: \n \n',
+                style: TextStyle(fontWeight: FontWeight.w300, color: Colors.white),
+              ),
+              TextSpan(
+                text: '${product.brand} ${product.name}',
+                style: TextStyle(fontWeight: FontWeight.w800, color: Colors.white),
+              ),
+              TextSpan(
+                text: '?',
+                style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Отменить', style: TextStyle(color: Colors.white)),
+          ),
+          TextButton(
+            onPressed: () {
+              setState(() {
+                _products = _products.then((productList) => productList.where((p) => p.id != product.id).toList());
+              });
+              Navigator.of(context).pop();
+            },
+            child: Container(
+                  width: 100,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Удалить',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+          ),
+        ],
+      );
+    },
+  );
+}
 }
