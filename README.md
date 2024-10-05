@@ -30,8 +30,10 @@
 # Работа приложения представлена ниже:
 
 **Каталог, содержающий 10 товаров** (ПР №3)
+
 https://github.com/user-attachments/assets/8930e08a-68e1-4f2f-9ff4-8dd8ece4decb
 
 **Удаление товара(ов) + Добавление товара(ов)** (ПР №4)
+
 https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716
 
