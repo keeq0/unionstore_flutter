@@ -29,8 +29,6 @@
 
 Работа приложения представлена ниже:
 
-https://github.com/user-attachments/assets/8393a2e4-731a-44a0-a9c3-8dbe7126f824
-
-https://github.com/user-attachments/assets/40422ef5-27d7-4ebb-907c-a3385292b1ca
-
+https://github.com/user-attachments/assets/8930e08a-68e1-4f2f-9ff4-8dd8ece4decb
+https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716
 
