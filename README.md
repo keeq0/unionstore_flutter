@@ -30,5 +30,6 @@
 Работа приложения представлена ниже:
 
 https://github.com/user-attachments/assets/8930e08a-68e1-4f2f-9ff4-8dd8ece4decb
+
 https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716
 
