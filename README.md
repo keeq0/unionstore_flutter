@@ -27,7 +27,29 @@
 
 ***Примечание***: некоторые элементы, такие как бургер-меню или поиск не работают, они сделаны для "целостности картины".
 
-Работа приложения представлена ниже:
+# Работа приложения представлена ниже:
 
-https://github.com/user-attachments/assets/5c5acd47-b6b6-4af6-af72-beff90c0822d
+**Каталог, содержающий 10 товаров** (ПР №3)
 
+https://github.com/user-attachments/assets/8930e08a-68e1-4f2f-9ff4-8dd8ece4decb
+
+**Удаление товара(ов) + Добавление товара(ов)** (ПР №4)
+
+<table align="center">
+  <tr>
+    <th style="text-align: center;">Удаление</th>
+    <th style="text-align: center;">Добавление</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+     https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716
+    </td>
+    <td style="text-align: center;">
+     https://github.com/user-attachments/assets/0628e8ad-58b4-4bae-8ba6-f3c61529d600
+    </td>
+  </tr>
+</table>
+
+
+
+**Навигационная панель** (ПР №5)
