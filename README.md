@@ -16,7 +16,17 @@
 
 **Каталог, содержающий 10 товаров** (ПР №3)
 
-https://github.com/user-attachments/assets/8930e08a-68e1-4f2f-9ff4-8dd8ece4decb
+<table align="center">
+  <tr>
+    <th style="text-align:center;">Каталог с товарами</th>
+  </tr>
+  <tr>
+    <td>
+      https://github.com/user-attachments/assets/8930e08a-68e1-4f2f-9ff4-8dd8ece4decb
+    </td>
+  </tr>
+</table>
+
 
 **Удаление товара(ов) + Добавление товара(ов)** (ПР №4)
 
