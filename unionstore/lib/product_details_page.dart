@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 import './product.dart';
 
 class ProductDetailsPage extends StatelessWidget {
@@ -53,14 +54,27 @@ class ProductDetailsPage extends StatelessWidget {
 
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  'assets/photos/${product.mainPhotoId}.png',
+                child: Image.file(
+                  File('/data/user/0/com.example.unionstore/cache/photos/${product.mainPhotoId}.png'),
                   width: 350,
                   height: 250,
                   fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      width: 350,
+                      height: 250,
+                      color: Colors.grey,
+                      child: const Center(
+                        child: Text(
+                          'Ошибка загрузки изображения',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
-              const SizedBox(height: 20), 
+              const SizedBox(height: 20),
 
               Text(
                 product.description,
@@ -135,30 +149,27 @@ class ProductDetailsPage extends StatelessWidget {
                     width: 170,
                     height: 50,
                     child: ElevatedButton.icon(
-                        icon: Image.asset(
-                          'assets/images/cart.png',
-                          width: 20,
-                          height: 20,
-                        ), 
-                        label: const Text(
-                          'В корзину',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white, 
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(75, 85, 99, 1),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        onPressed: () {
-                        
-                        },
+                      icon: Image.asset(
+                        'assets/images/cart.png',
+                        width: 20,
+                        height: 20,
                       ),
-
+                      label: const Text(
+                        'В корзину',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromRGBO(75, 85, 99, 1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      onPressed: () {},
+                    ),
                   ),
                   const SizedBox(width: 10),
                   SizedBox(
@@ -166,20 +177,18 @@ class ProductDetailsPage extends StatelessWidget {
                     height: 50,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromRGBO(55, 0, 255, 1), 
+                        backgroundColor: const Color.fromRGBO(55, 0, 255, 1),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
-                      onPressed: () {
-                       
-                      },
+                      onPressed: () {},
                       child: const Text(
                         'Купить сейчас',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white, 
+                          color: Colors.white,
                         ),
                       ),
                     ),
