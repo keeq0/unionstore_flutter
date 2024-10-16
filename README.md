@@ -39,12 +39,12 @@ https://github.com/user-attachments/assets/8930e08a-68e1-4f2f-9ff4-8dd8ece4decb
   <tr>
     <td>
       <a href="https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716">
-        <img src="https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716" width="300">
+        <img src="https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716" width="600">
       </a>
     </td>
     <td>
       <a href="https://github.com/user-attachments/assets/0628e8ad-58b4-4bae-8ba6-f3c61529d600">
-        <img src="https://github.com/user-attachments/assets/0628e8ad-58b4-4bae-8ba6-f3c61529d600" width="300">
+        <img src="https://github.com/user-attachments/assets/0628e8ad-58b4-4bae-8ba6-f3c61529d600" width="600">
       </a>
     </td>
   </tr>
