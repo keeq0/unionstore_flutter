@@ -64,3 +64,21 @@
   </tr>
 </table>
 
+**Корзина и профиль** (ПР №6)
+
+Добавлена вкладка "Корзина". 
+
+<table>
+  <tr>
+    <th style="text-align: center;">Корзина</th>
+     <th style="text-align: center;">Редактирование профиля</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      https://github.com/user-attachments/assets/f184c5d0-e499-46a9-a0a1-0b41fa1dec23
+    </td>
+    <td style="text-align: center;">
+
+    </td>
+  </tr>
+</table>
