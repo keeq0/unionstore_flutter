@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:unionstore/pages/CartPage.dart';
 import 'appbar.dart'; 
 import 'custom_bottom_navigation.dart'; 
 import './pages/CatalogPage.dart';
 import './pages/FavouritePage.dart'; 
 import './pages/ProfilePage.dart';
+import './product.dart'; // Импорт модели Product
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +38,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
+  final Set<Product> _cartProducts = {}; // Список для хранения товаров в корзине
 
   void _onTabSelected(int index) {
     setState(() {
@@ -43,16 +46,16 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  final List<Widget> _pages = [
-    const CatalogPage(), 
-    const FavoritesPage(),
-    const ProfilePage(), 
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _pages = [
+      CatalogPage(cartProducts: _cartProducts), 
+      const FavoritesPage(),
+      const ProfilePage(),
+    ];
+
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(cartProducts: _cartProducts), // Передаем товары в корзине в AppBar
       body: _pages[_currentIndex], 
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,

@@ -7,10 +7,13 @@ import '../product.dart';
 import '../data_service.dart';
 import '../product_details_page.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import '../favorites_manager.dart'; 
+import '../favorites_manager.dart';
+import './CartPage.dart';
 
 class CatalogPage extends StatefulWidget {
-  const CatalogPage({Key? key}) : super(key: key);
+  final Set<Product> cartProducts;
+
+  const CatalogPage({Key? key, required this.cartProducts}) : super(key: key);
 
   @override
   _CatalogPageState createState() => _CatalogPageState();
@@ -538,31 +541,55 @@ class _CatalogPageState extends State<CatalogPage> {
                         ),
                       ),
                     ),
-                    Container(
-                      width: 65,
-                      height: 20,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 75, 85, 99),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/cart.png',
-                            width: 10,
-                            height: 10,
-                          ),
-                          const SizedBox(width: 2),
-                          const Text(
-                            'Корзина',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (widget.cartProducts.contains(product)) {
+                            widget.cartProducts.remove(product);
+                          } else {
+                            widget.cartProducts.add(product);
+                          }
+                        });
+                      },
+                      child: Container(
+                        width: 65,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          color: widget.cartProducts.contains(product)
+                              ? const Color.fromARGB(255, 115, 76, 255)
+                              : const Color.fromARGB(255, 75, 85, 99),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: widget.cartProducts.contains(product)
+                              ? const Text(
+                                  'В Корзине',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 8,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )
+                              : Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/cart.png',
+                                      width: 10,
+                                      height: 10,
+                                    ),
+                                    const SizedBox(width: 2),
+                                    const Text(
+                                      'Корзина',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 8,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                        ),
                       ),
                     ),
                     Container(

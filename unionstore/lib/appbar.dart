@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import '../pages/CartPage.dart'; // Импорт страницы корзины
+import '../product.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final Set<Product> cartProducts; // Добавляем переменную для хранения товаров в корзине
+
+  CustomAppBar({required this.cartProducts}); // Конструктор с обязательным параметром
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,38 +25,29 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
         actions: [
-          _buildBurgerMenuIcon(),
+          _buildCartIcon(context),
         ],
       ),
     );
   }
 
-  Widget _buildBurgerMenuIcon() {
+  Widget _buildCartIcon(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 20.0),
       child: GestureDetector(
-        onTap: () {},
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _buildBurgerLine(),
-            const SizedBox(height: 6),
-            _buildBurgerLine(),
-            const SizedBox(height: 6),
-            _buildBurgerLine(),
-          ],
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CartPage(cartProducts: cartProducts), // Передаем список товаров в корзине
+            ),
+          );
+        },
+        child: Icon(
+          Icons.shopping_cart,
+          color: Colors.white,
+          size: 20,
         ),
-      ),
-    );
-  }
-
-  Widget _buildBurgerLine() {
-    return Container(
-      width: 40,
-      height: 2,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(5),
       ),
     );
   }
