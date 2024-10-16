@@ -9,7 +9,8 @@
         "old_price": 7999,
         "article": "241102358",
         "season": "круглый год",
-        "material": "текстиль; резина"
+        "material": "текстиль; резина",
+        "is_favorite": false
       },
       {
         "id": 2,
@@ -21,7 +22,8 @@
         "old_price": 7500,
         "article": "213512322",
         "season": "весна / демисезон / лето / осень",
-        "material": "кожа; нейлон"
+        "material": "кожа; нейлон",
+        "is_favorite": false
       },
       {
         "id": 3,
@@ -33,7 +35,8 @@
         "old_price": 7500,
         "article": "U574LGBN",
         "season": "круглый год",
-        "material": "натуральная кожа; текстиль"
+        "material": "натуральная кожа; текстиль",
+        "is_favorite": false
       },
       {
         "id": 4,
@@ -45,7 +48,8 @@
         "old_price": 7500,
         "article": "21538791",
         "season": "круглый год",
-        "material": "натуральная кожа; текстиль; резина"
+        "material": "натуральная кожа; текстиль; резина",
+        "is_favorite": false
       },
       {
         "id": 5,
@@ -57,7 +61,8 @@
         "old_price": 7500,
         "article": "A02051C",
         "season": "круглый год",
-        "material": "текстиль; резина"
+        "material": "текстиль; резина",
+        "is_favorite": false
       },
       {
         "id": 6,
@@ -69,7 +74,8 @@
         "old_price": 9999,
         "article": "M1906RA",
         "season": "круглый год",
-        "material": "ткань, искусственная кожа"
+        "material": "ткань, искусственная кожа",
+        "is_favorite": false
       },
       {
         "id": 7,
@@ -81,7 +87,8 @@
         "old_price": 11999,
         "article": "5556667",
         "season": "круглый год",
-        "material": "ткань, искусственная кожа; резина"
+        "material": "ткань, искусственная кожа; резина",
+        "is_favorite": false
       },
       {
         "id": 8,
@@ -93,7 +100,8 @@
         "old_price": 23199,
         "article": "H893249",
         "season": "круглый год",
-        "material": "натуральная кожа; текстиль"
+        "material": "натуральная кожа; текстиль",
+        "is_favorite": false
       },
       {
         "id": 9,
@@ -105,7 +113,8 @@
         "old_price": 7499,
         "article": "M93G9J3333",
         "season": "круглый год",
-        "material": "натуральная кожа; текстиль"
+        "material": "натуральная кожа; текстиль",
+        "is_favorite": false
       },
       {
         "id": 10,
@@ -116,7 +125,8 @@
         "current_price": 6500,
         "article": "M1906RA",
         "season": "круглый год",
-        "material": "ткань, искусственная кожа"
+        "material": "ткань, искусственная кожа",
+        "is_favorite": false
       }
 ]
   

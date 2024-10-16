@@ -11,6 +11,7 @@ class Product {
   final String article;
   final String season;
   final String material;
+  bool isFavorite;
 
   Product({
     required this.id,
@@ -23,6 +24,7 @@ class Product {
     required this.article,
     required this.season,
     required this.material,
+    this.isFavorite = false, // Значение по умолчанию
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -37,6 +39,7 @@ class Product {
       article: json['article'],
       season: json['season'],
       material: json['material'],
+      isFavorite: json['is_favorite'] ?? false, // Использование значения по умолчанию
     );
   }
 }
