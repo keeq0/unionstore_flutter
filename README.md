@@ -34,16 +34,26 @@
 https://github.com/user-attachments/assets/8930e08a-68e1-4f2f-9ff4-8dd8ece4decb
 
 **Удаление товара(ов) + Добавление товара(ов)** (ПР №4)
-<table>
-<tr>
-  <td>
-    https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716
-  </td>
-<td>
-  https://github.com/user-attachments/assets/0628e8ad-58b4-4bae-8ba6-f3c61529d600
-</td>
-</tr>
+
+<table align="center">
+  <tr>
+    <th style="text-align: center;">Удаление</th>
+    <th style="text-align: center;">Добавление</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      <a href="https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716">
+        <img src="https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716" width="300">
+      </a>
+    </td>
+    <td style="text-align: center;">
+      <a href="https://github.com/user-attachments/assets/0628e8ad-58b4-4bae-8ba6-f3c61529d600">
+        <img src="https://github.com/user-attachments/assets/0628e8ad-58b4-4bae-8ba6-f3c61529d600" width="300">
+      </a>
+    </td>
+  </tr>
 </table>
+
 
 
 **Навигационная панель** (ПР №5)
