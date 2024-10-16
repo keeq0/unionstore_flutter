@@ -75,7 +75,7 @@
   </tr>
   <tr>
     <td style="text-align: center;">
-      https://github.com/user-attachments/assets/f184c5d0-e499-46a9-a0a1-0b41fa1dec23
+      https://github.com/user-attachments/assets/23fc356e-fa3b-4e54-bd76-75d1683f7a35
     </td>
     <td style="text-align: center;">
 
