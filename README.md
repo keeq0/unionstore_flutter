@@ -41,7 +41,7 @@
   </tr>
   <tr>
     <td style="text-align: center;">
-        https://github.com/user-attachments/assets/4afe7038-f24f-4d80-bb1d-bdd04cd14f41
+        https://github.com/user-attachments/assets/0c56d448-cb16-4766-aaa3-ee2289254716
     </td>
     <td style="text-align: center;">
      https://github.com/user-attachments/assets/0628e8ad-58b4-4bae-8ba6-f3c61529d600
