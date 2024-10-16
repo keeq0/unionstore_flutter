@@ -16,7 +16,7 @@
 
 **Каталог, содержающий 10 товаров** (ПР №3)
 
-<table align="center">
+<table>
   <tr>
     <th style="text-align:center;">Каталог с товарами</th>
   </tr>
