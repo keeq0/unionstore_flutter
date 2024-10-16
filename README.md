@@ -16,16 +16,17 @@
 
 **Каталог, содержающий 10 товаров** (ПР №3)
 
-<table style="width: 10;">
+<table style="width: 800px; margin: 0 auto;">
   <tr>
-    <th style="text-align:center; width: 10;">Каталог с товарами</th>
+    <th style="text-align: center;">Каталог с товарами</th>
   </tr>
   <tr>
-    <td>
-      https://github.com/user-attachments/assets/8930e08a-68e1-4f2f-9ff4-8dd8ece4decb
+    <td style="text-align: center;">
+      <a href="https://github.com/user-attachments/assets/8930e08a-68e1-4f2f-9ff4-8dd8ece4decb">Ссылка на изображение</a>
     </td>
   </tr>
 </table>
+
 
 
 **Удаление товара(ов) + Добавление товара(ов)** (ПР №4)
