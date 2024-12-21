@@ -90,17 +90,17 @@
 
 ![image](https://github.com/user-attachments/assets/39bf3df6-5969-412c-a741-8f93905da936)
 
+Приложение получает данные с сервера по адресу:
+
+```
+  const String apiUrl = 'http://10.0.2.2:8080/products/...';
+  ...
+```
+
 Вывод товаров по адресу *localhost:8080/products*:
 
 ![image](https://github.com/user-attachments/assets/0555512a-063a-41f3-925f-6e74fd0700f1)
 
-В коде проекта метод loadProducts() был изменён на fetchProducts(), который получает список товаров с сервера:
-
-```
-Future<List<Product>> fetchProducts() async {
-  const String apiUrl = 'http://10.0.2.2:8080/products';
-  ...
-```
 <table>
   <tr>
     <th style="text-align: center;">Загрузка товаров с сервера</th>
