@@ -115,20 +115,31 @@
 
 В данной практической работе я создал маршруты для серверной части:
 
-```GET``` /products - Получить все продукты
+> ```GET``` /products - Получить все продукты
 
-```POST``` /products/create - Создать продукт
+> ```POST``` /products/create - Создать продукт
 
-```DELETE``` /products/delete/{id} - Удалить продукт
+> ```DELETE``` /products/delete/{id} - Удалить продукт
 
-```PUT``` /products/update/{id} - Обновление продукта
+> ```PUT``` /products/update/{id} - Обновление продукта
 
-```GET``` /cart - Получить все элементы корзины
+> ```GET``` /cart - Получить все элементы корзины
 
-```POST``` /cart/add - Добавить продукт в корзину
+> ```POST``` /cart/add - Добавить продукт в корзину
 
-```PATCH``` /cart/increase/{id} - Увеличить количество товара
+> ```PATCH``` /cart/increase/{id} - Увеличить количество товара
 
-```PATCH``` /cart/decrease/{id} - Уменьшить количество товара
+> ```PATCH``` /cart/decrease/{id} - Уменьшить количество товара
 
-```DELETE``` /cart/remove/{id} - Удалить товар из корзины
+> ```DELETE``` /cart/remove/{id} - Удалить товар из корзины
+
+<table>
+  <tr>
+    <th style="text-align: center;">Добавление, редактирование, удаление товаров + корзина</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+  1    https://github.com/user-attachments/assets/9013a587-8991-4bd7-b5e4-e23a278c0749
+    </td>
+  </tr>
+</table>
