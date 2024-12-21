@@ -111,3 +111,25 @@ Future<List<Product>> fetchProducts() async {
     </td>
   </tr>
 </table>
+
+**Практическая работа №9**
+
+В данной практической работе я создал маршруты для серверной части:
+
+```GET``` /products - Получить все продукты
+
+```POST``` /products/create - Создать продукт
+
+```DELETE``` /products/delete/{id} - Удалить продукт
+
+```PUT``` /products/update/{id} - Обновление продукта
+
+```GET``` /cart - Получить все элементы корзины
+
+```POST``` /cart/add - Добавить продукт в корзину
+
+```PATCH``` /cart/increase/{id} - Увеличить количество товара
+
+```PATCH``` /cart/decrease/{id} - Уменьшить количество товара
+
+```DELETE``` /cart/remove/{id} - Удалить товар из корзины
