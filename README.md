@@ -82,3 +82,32 @@
     </td>
   </tr>
 </table>
+
+## Разработка серверной части на языке Golang
+**Практическая работа №8**
+
+Структура backend части (/unionstore-backend):
+
+![image](https://github.com/user-attachments/assets/39bf3df6-5969-412c-a741-8f93905da936)
+
+Вывод товаров по адресу *localhost:8080/products*:
+
+![image](https://github.com/user-attachments/assets/0555512a-063a-41f3-925f-6e74fd0700f1)
+
+В коде проекта метод loadProducts() был изменён на fetchProducts(), который получает список товаров с сервера:
+
+```
+Future<List<Product>> fetchProducts() async {
+  const String apiUrl = 'http://10.0.2.2:8080/products';
+  ...
+```
+<table>
+  <tr>
+    <th style="text-align: center;">Загрузка товаров с сервера</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      https://github.com/user-attachments/assets/dc2ed59d-9505-4b85-b556-bdc70d2669d4
+    </td>
+  </tr>
+</table>
