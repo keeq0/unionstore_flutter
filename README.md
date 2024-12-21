@@ -94,7 +94,6 @@
 
 ```
   const String apiUrl = 'http://10.0.2.2:8080/products/...';
-  ...
 ```
 
 Вывод товаров по адресу *localhost:8080/products*:
