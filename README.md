@@ -66,7 +66,7 @@
 
 **Корзина и профиль** (ПР №6)
 
-Добавлена вкладка "Корзина". 
+Добавлена вкладка "Корзина" и функция редактирования информации в профиле.
 
 <table>
   <tr>
@@ -82,3 +82,88 @@
     </td>
   </tr>
 </table>
+
+## Разработка серверной части на языке Golang
+**Практическая работа №8**
+
+Структура backend части (/unionstore-backend):
+
+![image](https://github.com/user-attachments/assets/39bf3df6-5969-412c-a741-8f93905da936)
+
+Приложение получает данные с сервера по адресу:
+
+```
+  const String apiUrl = 'http://10.0.2.2:8080/products/...';
+
+  const String apiUrl = 'http://10.0.2.2:8080/cart/...';
+```
+
+Вывод товаров по адресу *localhost:8080/products*:
+
+![image](https://github.com/user-attachments/assets/0555512a-063a-41f3-925f-6e74fd0700f1)
+
+<table>
+  <tr>
+    <th style="text-align: center;">Загрузка товаров с сервера</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      https://github.com/user-attachments/assets/dc2ed59d-9505-4b85-b556-bdc70d2669d4
+    </td>
+  </tr>
+</table>
+
+**Практическая работа №9-№10**
+
+В данной практической работе я создал маршруты для серверной части и взаимодействие с ней:
+
+> ```GET``` /products - Получить все продукты
+
+> ```POST``` /products/create - Создать продукт
+
+> ```DELETE``` /products/delete/{id} - Удалить продукт
+
+> ```PUT``` /products/update/{id} - Обновление продукта
+
+> ```GET``` /cart - Получить все элементы корзины
+
+> ```POST``` /cart/add - Добавить продукт в корзину
+
+> ```PATCH``` /cart/increase/{id} - Увеличить количество товара
+
+> ```PATCH``` /cart/decrease/{id} - Уменьшить количество товара
+
+> ```DELETE``` /cart/remove/{id} - Удалить товар из корзины
+
+<table>
+  <tr>
+    <th style="text-align: center;">Добавление, редактирование, удаление товаров + корзина</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      https://github.com/user-attachments/assets/9013a587-8991-4bd7-b5e4-e23a278c0749
+    </td>
+  </tr>
+</table>
+
+**Практическая работа №11-№12**
+
+В данной практической работе я создал базу данных для приложения и реализовал регистрацию/авторизацию пользователей. Также добавил поиск и фильтрацию товаров в каталоге.
+
+<table>
+  <tr>
+    <th style="text-align: center;">Авторизация / Регистрация</th>
+     <th style="text-align: center;">Поиск и фильтры</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+        https://github.com/user-attachments/assets/0f5d627b-d861-4556-924d-9b31843b92d3
+    </td>
+    <td style="text-align: center;">
+      https://github.com/user-attachments/assets/da517e1e-47c7-4b19-a8ae-00b2843d61a6
+    </td>
+  </tr>
+</table>
+
+
+
