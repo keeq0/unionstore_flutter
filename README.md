@@ -150,13 +150,20 @@
 
 В данной практической работе я создал базу данных для приложения и реализовал регистрацию/авторизацию пользователей. Также добавил поиск и фильтрацию товаров в каталоге.
 
-Структура базы данных:
-
-```
-CREATE DATABASE unionstore; 
-CREATE TABLE users;
-CREATE TABLE sessions;
-```
+<table>
+  <tr>
+    <th style="text-align: center;">Авторизация / Регистрация</th>
+     <th style="text-align: center;">Поиск и фильтры</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+        https://github.com/user-attachments/assets/0f5d627b-d861-4556-924d-9b31843b92d3
+    </td>
+    <td style="text-align: center;">
+      https://github.com/user-attachments/assets/e85afd2e-8825-4019-b681-8a259b9fcbba
+    </td>
+  </tr>
+</table>
 
 
 
