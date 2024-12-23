@@ -160,7 +160,7 @@
         https://github.com/user-attachments/assets/0f5d627b-d861-4556-924d-9b31843b92d3
     </td>
     <td style="text-align: center;">
-      https://github.com/user-attachments/assets/e85afd2e-8825-4019-b681-8a259b9fcbba
+      https://github.com/user-attachments/assets/da517e1e-47c7-4b19-a8ae-00b2843d61a6
     </td>
   </tr>
 </table>
