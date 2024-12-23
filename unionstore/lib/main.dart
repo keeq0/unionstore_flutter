@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:unionstore/pages/CartPage.dart';
-import 'appbar.dart'; 
-import 'custom_bottom_navigation.dart'; 
+import 'package:shared_preferences/shared_preferences.dart';
+import './pages/ProfilePage.dart'; 
 import './pages/CatalogPage.dart';
 import './pages/FavouritePage.dart'; 
-import './pages/ProfilePage.dart';
-import './product.dart'; // Импорт модели Product
+import './custom_bottom_navigation.dart';
+import './appbar.dart'; 
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -21,24 +21,23 @@ class MyApp extends StatelessWidget {
       title: 'Union Store',
       theme: ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 6, 12, 24), 
+        scaffoldBackgroundColor: const Color.fromARGB(255, 6, 12, 24),
         fontFamily: 'Montserrat',
       ),
-      home: const MyHomePage(),
+      home: const MainScreen(), 
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _currentIndex = 0;
-  final Set<Product> _cartProducts = {}; // Список для хранения товаров в корзине
+class _MainScreenState extends State<MainScreen> {
+  int _currentIndex = 0; 
 
   void _onTabSelected(int index) {
     setState(() {
@@ -49,17 +48,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> _pages = [
-      CatalogPage(cartProducts: _cartProducts), 
-      const FavoritesPage(),
-      const ProfilePage(),
+      const CatalogPage(),
+      const FavoritesPage(), 
+      const ProfilePage(), 
     ];
 
     return Scaffold(
-      appBar: CustomAppBar(cartProducts: _cartProducts), // Передаем товары в корзине в AppBar
-      body: _pages[_currentIndex], 
+      appBar: const CustomAppBar(),
+      body: _pages[_currentIndex],
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
-        onTabSelected: _onTabSelected, 
+        onTabSelected: _onTabSelected,
       ),
     );
   }

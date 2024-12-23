@@ -1,15 +1,22 @@
 import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:http/http.dart' as http;
 import './product.dart';
 
-Future<List<Product>> loadProducts() async {
-  final String response = await rootBundle.loadString('assets/data/products.json');
-  final List<dynamic> data = json.decode(response);
-  return data.map((item) => Product.fromJson(item)).toList();
-}
+class DataService {
+  final String baseUrl = 'http://localhost:8080'; 
 
-Future<List<Photo>> loadPhotos() async {
-  final String response = await rootBundle.loadString('assets/data/photos.json');
-  final List<dynamic> data = json.decode(response);
-  return data.map((item) => Photo.fromJson(item)).toList();
+  Future<List<Product>> fetchProducts() async {
+    try {
+      final response = await http.get(Uri.parse('$baseUrl/products'));
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        return data.map((item) => Product.fromJson(item)).toList();
+      } else {
+        throw Exception('Ошибка загрузки данных: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Не удалось загрузить данные с сервера: $e');
+    }
+  }
 }

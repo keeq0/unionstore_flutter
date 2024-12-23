@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import '../api_service.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -12,24 +13,42 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  String name = 'Сергей Мякотных';
-  String email = 'keeqocontact@gmail.com';
-  String userId = '@keeq0';
+  bool isAuthenticated = false;
+  bool isRegistering = false; 
+  String name = ''; 
+  String email = '';
+  String userId = ''; 
   File? profileImage;
 
-  late Future<void> _profileFuture = _loadProfileData();
+  final ApiService _apiService = ApiService();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkAuthentication();
+  }
+
+  Future<void> _checkAuthentication() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isAuthenticated = prefs.getBool('is_authenticated') ?? false;
+    });
+    if (isAuthenticated) {
+      await _loadProfileData();
+    }
+  }
 
   Future<void> _loadProfileData() async {
     final prefs = await SharedPreferences.getInstance();
-    name = prefs.getString('profile_name') ?? 'Сергей Мякотных';
-    email = prefs.getString('profile_email') ?? 'keeqocontact@gmail.com';
+    name = prefs.getString('profile_name') ?? 'Имя Фамилия';
+    email = prefs.getString('profile_email') ?? 'email@example.com';
+    userId = prefs.getString('profile_username') ?? '@username'; // Загружаем username
     await _loadProfileImage();
-  }
-
-  Future<void> _saveProfileData(String newName, String newEmail) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('profile_name', newName);
-    await prefs.setString('profile_email', newEmail);
   }
 
   Future<void> _loadProfileImage() async {
@@ -44,28 +63,121 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
-  Future<void> _saveProfileImage(File image) async {
-    final tempDir = await getTemporaryDirectory();
-    final path = '${tempDir.path}/profile_image.png';
+  Future<void> _login() async {
+    try {
+      final response = await _apiService.login(
+        emailController.text,
+        passwordController.text,
+      );
+
+      // Сохраняем данные в SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('is_authenticated', true);
+      await prefs.setString('profile_name', '${response['first_name']} ${response['last_name']}');
+      await prefs.setString('profile_email', response['email']);
+      await prefs.setString('profile_username', response['username']);
+
+      // Обновляем состояние
+      setState(() {
+        isAuthenticated = true;
+        name = '${response['first_name']} ${response['last_name']}';
+        email = response['email'];
+        userId = response['username'];
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Ошибка входа: $e')),
+      );
+    }
+  }
+
+  Future<void> _register() async {
+    try {
+      await _apiService.register(
+        usernameController.text,
+        firstNameController.text,
+        lastNameController.text,
+        emailController.text,
+        passwordController.text,
+      );
+
+      setState(() {
+        isRegistering = false;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Регистрация успешна. Пожалуйста, войдите.')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Ошибка регистрации: $e')),
+      );
+    }
+  }
+
+  Future<void> _logout() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('profile_image_path', path);
-    await image.copy(path);
+    await prefs.clear(); // Очищаем данные
     setState(() {
-      profileImage = image;
+      isAuthenticated = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<void>(
-      future: _profileFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else {
-          return _buildProfileContent(context);
-        }
-      },
+    return isAuthenticated ? _buildProfileContent(context) : _buildAuthForm(context);
+  }
+
+  Widget _buildAuthForm(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (isRegistering)
+            Column(
+              children: [
+                TextField(
+                  controller: firstNameController,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(labelText: 'Имя', labelStyle: TextStyle(color: Colors.white)),
+                ),
+                TextField(
+                  controller: lastNameController,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(labelText: 'Фамилия', labelStyle: TextStyle(color: Colors.white)),
+                ),
+                TextField(
+                  controller: usernameController,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(labelText: 'Имя пользователя', labelStyle: TextStyle(color: Colors.white)),
+                ),
+              ],
+            ),
+          TextField(
+            controller: emailController,
+            style: const TextStyle(color: Colors.white),
+            decoration: const InputDecoration(labelText: 'Email', labelStyle: TextStyle(color: Colors.white)),
+          ),
+          TextField(
+            controller: passwordController,
+            obscureText: true,
+            style: const TextStyle(color: Colors.white),
+            decoration: const InputDecoration(labelText: 'Пароль', labelStyle: TextStyle(color: Colors.white)),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: isRegistering ? _register : _login,
+            child: Text(isRegistering ? 'Зарегистрироваться' : 'Войти'),
+          ),
+          TextButton(
+            onPressed: () => setState(() {
+              isRegistering = !isRegistering;
+            }),
+            child: Text(isRegistering ? 'Уже есть аккаунт? Войти' : 'Нет аккаунта? Зарегистрироваться'),
+          ),
+        ],
+      ),
     );
   }
 
@@ -75,7 +187,6 @@ class _ProfilePageState extends State<ProfilePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Круглое фото
           GestureDetector(
             onTap: _pickImage,
             child: CircleAvatar(
@@ -94,8 +205,6 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           const SizedBox(height: 20),
-
-          // Имя и фамилия
           Text(
             name,
             style: const TextStyle(
@@ -105,8 +214,6 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           const SizedBox(height: 5),
-
-          // ID пользователя
           Text(
             userId,
             style: const TextStyle(
@@ -115,8 +222,6 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           const SizedBox(height: 5),
-
-          // Почта пользователя
           Text(
             email,
             style: const TextStyle(
@@ -125,45 +230,6 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           const SizedBox(height: 40),
-
-          // Кнопка "Редактировать"
-          Container(
-            width: double.infinity,
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.black, // Черный фон
-              border: Border.all(color: Colors.grey), // Серая обводка
-            ),
-            child: TextButton(
-              onPressed: _showEditProfileDialog,
-              child: const Text(
-                'Редактировать профиль',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-
-          // Кнопка "Мои заказы"
-          Container(
-            width: double.infinity,
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: const Color.fromARGB(128, 162, 162, 162),
-            ),
-            child: TextButton(
-              onPressed: () {},
-              child: const Text(
-                'Мои заказы',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-
-          // Кнопка "Выйти"
           Container(
             width: double.infinity,
             height: 50,
@@ -172,7 +238,7 @@ class _ProfilePageState extends State<ProfilePage> {
               color: const Color.fromARGB(255, 115, 76, 255),
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: _logout,
               child: const Text(
                 'Выйти',
                 style: TextStyle(color: Colors.white, fontSize: 16),
@@ -184,77 +250,22 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  void _showEditProfileDialog() {
-    final TextEditingController nameController = TextEditingController(text: name);
-    final TextEditingController emailController = TextEditingController(text: email);
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          backgroundColor: const Color.fromARGB(255, 64, 64, 64),
-          title: const Text(
-            'Редактировать профиль',
-            style: TextStyle(color: Colors.white),
-          ),
-          content: SingleChildScrollView(
-            child: Column(
-              children: [
-                TextField(
-                  controller: nameController,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: const InputDecoration(
-                    labelText: 'Имя и фамилия',
-                    labelStyle: TextStyle(color: Colors.white),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: emailController,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: const InputDecoration(
-                    labelText: 'Электронная почта',
-                    labelStyle: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text(
-                'Отменить',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  name = nameController.text;
-                  email = emailController.text;
-                });
-                _saveProfileData(name, email);
-                Navigator.of(context).pop();
-              },
-              child: const Text(
-                'Сохранить',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   Future<void> _pickImage() async {
     final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       final image = File(pickedFile.path);
       await _saveProfileImage(image);
     }
+  }
+
+  Future<void> _saveProfileImage(File image) async {
+    final tempDir = await getTemporaryDirectory();
+    final path = '${tempDir.path}/profile_image.png';
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('profile_image_path', path);
+    await image.copy(path);
+    setState(() {
+      profileImage = image;
+    });
   }
 }

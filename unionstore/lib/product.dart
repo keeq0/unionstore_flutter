@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 class Product {
-  final int id;
-  final String brand;
-  final String name;
-  final int mainPhotoId;
-  final String description;
-  final int currentPrice;
-  final int? oldPrice;
-  final String article;
-  final String season;
-  final String material;
+  int id;
+  String brand;
+  String name;
+  int mainPhotoId;
+  String description;
+  int currentPrice;
+  int? oldPrice;
+  String article;
+  String season;
+  String material;
   bool isFavorite;
 
   Product({
@@ -24,7 +24,7 @@ class Product {
     required this.article,
     required this.season,
     required this.material,
-    this.isFavorite = false, // Значение по умолчанию
+    this.isFavorite = false,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -39,7 +39,7 @@ class Product {
       article: json['article'],
       season: json['season'],
       material: json['material'],
-      isFavorite: json['is_favorite'] ?? false, // Использование значения по умолчанию
+      isFavorite: json['is_favorite'] ?? false,
     );
   }
 }

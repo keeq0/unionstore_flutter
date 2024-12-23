@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import '../pages/CartPage.dart'; // Импорт страницы корзины
-import '../product.dart';
+import '../pages/CartPage.dart'; 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Set<Product> cartProducts; // Добавляем переменную для хранения товаров в корзине
-
-  CustomAppBar({required this.cartProducts}); // Конструктор с обязательным параметром
+  const CustomAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +36,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CartPage(cartProducts: cartProducts), // Передаем список товаров в корзине
+              builder: (context) => const CartPage(), 
             ),
           );
         },
-        child: Icon(
+        child: const Icon(
           Icons.shopping_cart,
           color: Colors.white,
           size: 20,
